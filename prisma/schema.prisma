@@ -59,8 +59,16 @@ model User {
   posts         Post[]
   accounts      Account[]
   sessions      Session[]
+  profile       Profile?
 
   @@map(name: "users")
+}
+
+model Profile {
+  id     Int     @default(autoincrement()) @id
+  bio    String?
+  userId Int     @unique
+  user   User    @relation(fields: [userId], references: [id])
 }
 
 model VerificationToken {
