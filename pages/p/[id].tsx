@@ -56,10 +56,10 @@ const Post: React.FC<PostProps> = (props) => {
         <p>By {props?.author?.name || "Unknown author"}</p>
         <ReactMarkdown children={props.content} />
         {!props.published && userHasValidSession && (
-          <button onClick={() => publishPost(props.id)}>Publish</button>
+          <button onClick={() => publishPost(props.id)}>发布</button>
         )}
         {userHasValidSession && (
-          <button onClick={() => deletePost(props.id)}>Delete</button>
+          <button onClick={() => deletePost(props.id)}>删除</button>
         )}
       </div>
       <style jsx>{`
