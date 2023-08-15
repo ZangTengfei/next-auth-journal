@@ -8,13 +8,13 @@ const Header: React.FC = () => {
   const isActive: (pathname: string) => boolean = (pathname) =>
     router.pathname === pathname;
 
-  const {data: session, status} = useSession();
+  const { data: session, status } = useSession();
 
   let left = (
     <div className="left">
       <Link href="/" legacyBehavior>
         <a className="bold" data-active={isActive("/")}>
-          Feed
+          主页
         </a>
       </Link>
       <style jsx>{`
@@ -41,12 +41,12 @@ const Header: React.FC = () => {
 
   let right = null;
 
-  if (status === 'loading') {
+  if (status === "loading") {
     left = (
       <div className="left">
         <Link href="/" legacyBehavior>
           <a className="bold" data-active={isActive("/")}>
-            Feed
+            主页
           </a>
         </Link>
         <style jsx>{`
@@ -118,11 +118,13 @@ const Header: React.FC = () => {
       <div className="left">
         <Link href="/" legacyBehavior>
           <a className="bold" data-active={isActive("/")}>
-            Feed
+            主页
           </a>
         </Link>
         <Link href="/drafts" legacyBehavior>
-          <a data-active={isActive("/drafts")}>My drafts</a>
+          <a className="bold" data-active={isActive("/drafts")}>
+            记账
+          </a>
         </Link>
         <style jsx>{`
           .bold {
@@ -152,11 +154,11 @@ const Header: React.FC = () => {
         </p>
         <Link href="/create" legacyBehavior>
           <button>
-            <a>New post</a>
+            <a>新建+</a>
           </button>
         </Link>
         <button onClick={() => signOut()}>
-          <a>Log out</a>
+          <a>登出</a>
         </button>
         <style jsx>{`
           a {

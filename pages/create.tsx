@@ -25,24 +25,24 @@ const Draft: React.FC = () => {
     <Layout>
       <div>
         <form onSubmit={submitData}>
-          <h1>New Draft</h1>
+          <h1>新建记账</h1>
           <input
             autoFocus
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="Title"
+            placeholder="标题"
             type="text"
             value={title}
           />
           <textarea
             cols={50}
             onChange={(e) => setContent(e.target.value)}
-            placeholder="Content"
+            placeholder="内容"
             rows={8}
             value={content}
           />
-          <input disabled={!content || !title} type="submit" value="Create" />
+          <input disabled={!content || !title} type="submit" value="创建" />
           <a className="back" href="#" onClick={() => Router.push("/")}>
-            or Cancel
+            取消
           </a>
         </form>
       </div>
