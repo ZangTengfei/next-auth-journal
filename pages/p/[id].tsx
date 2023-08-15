@@ -53,7 +53,7 @@ const Post: React.FC<PostProps> = (props) => {
     <Layout>
       <div>
         <h2>{title}</h2>
-        <p>By {props?.author?.name || "Unknown author"}</p>
+        <p>经办人 {props?.author?.name || "Unknown author"}</p>
         <ReactMarkdown children={props.content} />
         {!props.published && userHasValidSession && (
           <button onClick={() => publishPost(props.id)}>发布</button>
