@@ -17,6 +17,52 @@ model Post {
   createdAt DateTime @default(now())
 }
 
+model Seller {
+  id        Int     @id @default(autoincrement())
+  name      String
+  address   String?
+  phone     String?
+  createdAt DateTime @default(now())
+  purchaseOrders PurchaseOrder[]
+}
+
+model GoodsCategory {
+  id        Int     @id @default(autoincrement())
+  name      String
+  price     Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  purchaseOrderItems PurchaseOrderItem[]
+}
+
+model PurchaseOrder {
+  id        Int     @id @default(autoincrement())
+  operator  User    @relation(fields: [operatorId], references: [id])
+  operatorId Int
+  seller    Seller  @relation(fields: [sellerId], references: [id])
+  sellerId  Int
+  paid      Boolean @default(false)
+  total_fee Float
+  remarks   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  items     PurchaseOrderItem[]
+}
+
+model PurchaseOrderItem {
+  id        Int     @id @default(autoincrement())
+  purchaseOrder PurchaseOrder @relation(fields: [purchaseOrderId], references: [id])
+  purchaseOrderId Int
+  goodsCategory GoodsCategory @relation(fields: [goodsCategoryId], references: [id])
+  goodsCategoryId Int
+  grossWeight Float
+  tareWeight Float
+  netWeight Float
+  customPrice Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 model Account {
   id                 Int     @id @default(autoincrement())
   userId             Int     @map("user_id")
@@ -60,6 +106,7 @@ model User {
   posts         Post[]
   accounts      Account[]
   sessions      Session[]
+  purchaseOrders PurchaseOrder[]
 
   @@map(name: "users")
 }
