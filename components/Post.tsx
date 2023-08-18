@@ -18,9 +18,7 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
   return (
     <div onClick={() => Router.push("/p/[id]", `/p/${post.id}`)}>
       <h2>{post.title}</h2>
-      <small>
-        经办人 {authorName} 时间 {new Date().toLocaleString()}
-      </small>
+      <small>经办人 {authorName}</small>
       <ReactMarkdown children={post.content} />
       <style jsx>{`
         div {
