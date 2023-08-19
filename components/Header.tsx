@@ -118,12 +118,22 @@ const Header: React.FC = () => {
       <div className="left">
         <Link href="/" legacyBehavior>
           <a className="bold" data-active={isActive("/")}>
-            主页
+            文章
           </a>
         </Link>
         <Link href="/drafts" legacyBehavior>
           <a className="bold" data-active={isActive("/drafts")}>
-            记账
+            草稿
+          </a>
+        </Link>
+        <Link href="/purchaseDraft" legacyBehavior>
+          <a className="bold" data-active={isActive("/purchaseDraft")}>
+            收货单
+          </a>
+        </Link>
+        <Link href="/sellers" legacyBehavior>
+          <a className="bold" data-active={isActive("/sellers")}>
+            卖货客户
           </a>
         </Link>
         <style jsx>{`
@@ -133,12 +143,12 @@ const Header: React.FC = () => {
 
           a {
             text-decoration: none;
-            color: #000;
+            color: grey;
             display: inline-block;
           }
 
           .left a[data-active="true"] {
-            color: gray;
+            color: #000;
           }
 
           a + a {
