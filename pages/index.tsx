@@ -30,7 +30,7 @@ const Blog: React.FC<Props> = (props) => {
   return (
     <Layout>
       <div className="page">
-        <h1>日记账表</h1>
+        <h1>文章</h1>
         <main>
           {props.feed.map((post) => (
             <div key={post.id} className="post">
